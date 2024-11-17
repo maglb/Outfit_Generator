@@ -125,26 +125,26 @@ function displayWeather(weather) {
         weatherInfoEl.children[i].textContent = weather[i];
     }
 
- console.log(weatherIconEl);
-    // CODE TO DUSPLAY ICONS ACCORDING TO SKY STATUS
-        if (sky == "Thunderstorm") {
-            weatherIconEl.attr("class", "fa-solid fa-bolt");
-        }
+//  console.log(weatherIconEl);
+//     // CODE TO DUSPLAY ICONS ACCORDING TO SKY STATUS
+//         if (sky == "Thunderstorm") {
+//             weatherIconEl.attr("class", "fa-solid fa-bolt");
+//         }
 
-        else if (sky == "Clouds") {
-            weatherIconEl.attr("class", "fa-solid fa-cloud");
-        }
+//         else if (sky == "Clouds") {
+//             weatherIconEl.attr("class", "fa-solid fa-cloud");
+//         }
 
-        else if (sky == "Rain" || data.weather[0].main == "Drizzle") {
-            weatherIconEl.attr("class", "fa-solid fa-cloud-rain");
+//         else if (sky == "Rain" || data.weather[0].main == "Drizzle") {
+//             weatherIconEl.attr("class", "fa-solid fa-cloud-rain");
 
-        } else if (sky == "Snow") {
-            weatherIconEl.attr("class", "fa-solid fa-snowflake");
-        } else if (sky == "Clear") {
-            weatherIconEl.attr("class", "fa-solid fa-sun");
-        } else {
-            weatherIconEl.attr("class", "");
-        }
+//         } else if (sky == "Snow") {
+//             weatherIconEl.attr("class", "fa-solid fa-snowflake");
+//         } else if (sky == "Clear") {
+//             weatherIconEl.attr("class", "fa-solid fa-sun");
+//         } else {
+//             weatherIconEl.attr("class", "");
+//         }
 
 };
 
@@ -177,29 +177,68 @@ function searchOutfit(outfit) {
     }
 }
 
-function getOutfit(item) {
+// function getOutfit(item) {
 
-    var settings = {
-        async: true,
-        crossDomain: true,
-        url: 'https://asos-com1.p.rapidapi.com/products/search?q=' + item,
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': '043b3bad18mshd179abfcca37a49p16e669jsn3d102d03cc97',
-            'X-RapidAPI-Host': 'asos-com1.p.rapidapi.com'
-        }
-    };
+//     var settings = {
+//       async: true,
+//       crossDomain: true,
+//       url:
+//         "https://asos2.p.rapidapi.com/v2/auto-complete?store=US&country=US&currency=USD&sizeSchema=US&lang=en-US&q=" +
+//         item,
+//       method: "GET",
+//       headers: {
+//         "X-RapidAPI-Key": "043b3bad18mshd179abfcca37a49p16e669jsn3d102d03cc97",
+//         "X-RapidAPI-Host": "asos2.p.rapidapi.com",
+//       },
+//     };
 
-    $.ajax(settings).done(function (response) {
-        // console.log(response);
-        var randomIndex = Math.floor(Math.random() * response.data.products.length);
-        // console.log(randomIndex);
-        product = response.data.products[randomIndex];
-        // console.log(product);
-        getDetails(product);
-    });
+//     $.ajax(settings).done(function (response) {
+//         // console.log(response);
+//         var randomIndex = Math.floor(Math.random() * response.data.products.length);
+//         // console.log(randomIndex);
+//         product = response.data.products[randomIndex];
+//         console.log(product);
+//         getDetails(product);
+//     });
 
+// };
+
+async function getOutfit(item) {
+
+    const url = 'https://real-time-product-search.p.rapidapi.com/search?q='+ item +'&country=us&language=en&page=1&limit=10&sort_by=BEST_MATCH&product_condition=ANY&min_rating=ANY';
+const options = {
+  method: "GET",
+  headers: {
+    "x-rapidapi-key": "043b3bad18mshd179abfcca37a49p16e669jsn3d102d03cc97",
+    "x-rapidapi-host": "real-time-product-search.p.rapidapi.com",
+  },
 };
+
+try {
+	const response = await fetch(url, options);
+	const result = await response.json();
+	console.log(result);
+} catch (error) {
+	console.error(error);
+}
+
+//   // replace `octocat` with anyone else's GitHub username
+//   var requestUrl = "https://api.github.com/users/krausyd/repos";
+
+//   fetch(requestUrl)
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       for (var i = 0; i < data.length; i++) {
+//         var listItem = document.createElement("li");
+//         listItem.textContent = data[i].html_url;
+//         repoList.appendChild(listItem);
+//       }
+//     });
+}
+
+
 
 // getOutfit("puffer");
 
