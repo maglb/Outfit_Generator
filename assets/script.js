@@ -179,7 +179,7 @@ function checkTemp(tempK) {
   } else if (tempK > 294) {
     outfit = summer;
   }
-  console.log(outfit);
+//   console.log(outfit);
   searchOutfit(outfit);
 }
 
@@ -188,7 +188,7 @@ function searchOutfit(outfit) {
   for (var i = 0; i < outfit.length; i++) {
     getOutfit(outfit[i]);
     // console log name item to be searched
-    console.log(outfit[i]);
+    // console.log(outfit[i]);
   }
   if ((i = outfit.length)) {
     displayOutfit(outfitDetails);
@@ -299,8 +299,8 @@ function displayOutfit(outfitDetails) {
   var productImg;
   var productName;
   var productPrice;
-  var productColor;
-  var productLink;
+//   var productColor;
+//   var productLink;
 
   console.log("displaying");
 
@@ -318,12 +318,12 @@ function displayOutfit(outfitDetails) {
     // console.log(productImg.attr("src", productDetails[3]));
 
     productName = itemDetailsEl.children(1).children("h5");
-    // console.log(productName);
+    console.log(productName);
     productName.text(outfitDetails[i].name);
     // console.log(productName.text(outfitDetails[i].name));
 
     productPrice = itemDetailsEl.children(1).children("p").eq(0);
-    // console.log(productPrice);
+    console.log(productPrice);
     productPrice.text(outfitDetails[i].price);
     // console.log(productPrice.text(productDetails[1]));
 
